@@ -11,3 +11,7 @@
 - Circular Imports: là vấn đề xảy ra khi 2 module cố gắng gọi lẫn nhau, trực tiếp hoặc gián tiếp, dẫn đến xung đột trong quá trình khởi tạo
 - Cross Site Request Forgery (CSRF): là một lỗ hổng bảo mật trong ứng dụng web, cho phép kẻ tấn công thực hiện các hành động không mong muốn thay mặt người dùng mà không có sự đồng ý của họ
 - Raise được sử dụng để ném (throw) 1 ngoại lệ (exception) trong quá trình thực thi chương trình
+- @login_manager.user_loader:
+    + Người dùng đăng nhập thành công (thông qua login_user)
+    + Flask-Login lưu user_id vào session
+    + Trong các request tiếp theo, Flask-Login sử dụng @user_loader để tải lại đối tượng người dùng từ user_id và gán vào current_user
