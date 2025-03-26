@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     @property
     def prettier_budget(self):
         if len(str(self.budget))>= 4:
-            return f"{str(self.budget)[:-3]},{str(self.budget)[-3:]}"
+            return f"{str(self.budget)[:-3]},{str(self.budget)[-3:]}$"
         else:
             return f"{self.budget}"
     
@@ -34,6 +34,9 @@ class User(db.Model, UserMixin):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
 
+    def can_purchase(self, item_obj):
+        return self.budget >= item_obj.price
+    
     def __repr__(self):
         return f"User {self.username}"
 
